@@ -6,7 +6,11 @@
 
 <body>
     <p>Test text to see if this works</p>
-    <div id="game" height="100%" aspect-ratio="1:1"></div>
+    <div id="game" height="100%" aspect-ratio="1:1">
+        <svg height="400" width="400" style="background-color: aquamarine;">
+            <rect x="5" y="5" width="95" height="95" style="border-width: 10px;stroke:black;color:green"></rect>
+        </svg>
+    </div>
 
     <script>
         var gameElement = document.getElementById("game");
@@ -55,6 +59,7 @@
             rand1toround() {
                 return Math.floor(Math.random() * this.round) + 1
             }
+
             boardReady() {
                 let black = [0, 0, 0];
                 let white = [1, 1, 1];
