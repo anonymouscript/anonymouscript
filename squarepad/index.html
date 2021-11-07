@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>David</title>
+</head>
+
+<body>
+    <p>Test text to see if this works</p>
+    <div id="game" height="100%" aspect-ratio="1:1"></div>
+
+    <script>
+        var gameElement = document.getElementById("game");
+        class game {
+            constructor(round) {
+                this.round = round;
+                //board is 1 indexed it's sad
+                this.board = [];
+                for (let row = 0; row <= round + 1; row++) {
+                    this.board[row] = [];
+                    for (let col = 0; col <= round + 1; col++) {
+
+                        this.board[row][col] = Math.random() > 0.5 ? [0, 0, 0] : [1, 1, 1];
+                    }
+                }
+                while (!this.boardReady()) {
+                    var pickRow = this.rand1toround();
+                    var pickCol = this.rand1toround();
+                    while ((this.board[pickRow][pickCol].includes(1) && this.board[pickRow][pickCol].includes(0))) {
+                        pickRow = this.rand1toround();
+                        pickCol = this.rand1toround();
+                        //console.log(pickRow, pickCol);
+                    }
+                    var color = [0, 0, 0];
+                    color = color.map(() => Math.random() > 0.5 ? 1 : 0);
+                    let affectedCells = [
+                        [pickRow, pickCol + 1],
+                        [pickRow, pickCol - 1],
+                        [pickRow + 1, pickCol],
+                        [pickRow - 1, pickCol],
+                        [pickRow, pickCol]
+                    ];
+                    affectedCells.forEach(function(cell) {
+                        let oldCell = this.board[cell[0]][cell[1]];
+                        let red = (oldCell[0] + color[0]) % 2;
+                        let yellow = (oldCell[1] + color[1]) % 2;
+                        let blue = (oldCell[2] + color[2]) % 2;
+                        this.board[cell[0]][cell[1]] = [red, yellow, blue]
+                    }.bind(this));
+                }
+
+                console.log(this.board);
+
+
+            }
+            rand1toround() {
+                return Math.floor(Math.random() * this.round) + 1
+            }
+            boardReady() {
+                let black = [0, 0, 0];
+                let white = [1, 1, 1];
+                for (let row = 1; row <= this.round; row++) {
+                    for (let col = 1; col <= this.round; col++) {
+                        if (!(this.board[row][col].includes(1) && this.board[row][col].includes(0))) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        }
+        console.log("ClassDone")
+        console.log("1by1");
+        var a = new game(1);
+        console.log("4by4");
+        var b = new game(4);
+    </script>
+</body>
+
+</html>
