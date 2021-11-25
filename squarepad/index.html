@@ -5,15 +5,32 @@
 </head>
 
 <body>
-    <p>Test text to see if this works</p>
-    <div id="game" height="100%" aspect-ratio="1:1">
-        <svg height="400" width="400" style="background-color: aquamarine;">
-            <rect x="5" y="5" width="95" height="95" style="border-width: 10px;stroke:black;color:green"></rect>
+    <div id="game">
+        <svg height="400 " width="400 " style="background-color: aquamarine; ">
+            <rect x="4 " y="4 " width="95 " height="95 " style="border-width: 10px;stroke:black;fill:green;stroke-width: 8px; "></rect>
         </svg>
     </div>
 
     <script>
-        var gameElement = document.getElementById("game");
+        var gameElement = document.getElementById("game ");
+        var color = [
+            [
+                [
+                    "black ", "blue "
+                ],
+                [
+                    "yellow ", "green "
+                ]
+            ],
+            [
+                [
+                    "red ", "purple "
+                ],
+                [
+                    "orange ", "white "
+                ]
+            ]
+        ];
         class game {
             constructor(round) {
                 this.round = round;
@@ -53,13 +70,57 @@
                 }
 
                 console.log(this.board);
-
+                this.displayBoard(); //html on page after this point
+                this.rectangles = [];
+                for (let row = 1; row <= this.round; row++) {
+                    this.rectangles[row] = [];
+                    for (let col = 1; col <= this.round; col++) {
+                        let rectangle = document.getElementById(`${row},${col}`);
+                        this.rectangles[row][col] = rectangle;
+                        this.rectangles[rectangle] = [row, col]
+                    }
+                }
 
             }
             rand1toround() {
                 return Math.floor(Math.random() * this.round) + 1
             }
 
+            displayBoard() {
+                let displayArea = document.getElementById("game");
+                let svgWidth = 800;
+                let border = 8;
+                let innerWidth = svgWidth - border;
+                var htmlToDisplay = " "
+                var rectTags = " "
+                for (var row = 1; row <= this.round; row++) {
+                    for (var col = 1; col <= this.round; col++) {
+                        let cellColor = this.board[row][col];
+                        let fill = color[cellColor[0]][cellColor[1]][cellColor[2]];
+                        rectTags += `<rect x='${border/2 + innerWidth*(col-1)/this.round}' y='${border/2 + innerWidth*(row-1)/this.round}' width='${innerWidth/this.round} ' height='${innerWidth/this.round} ' style='border-width:${border}px;stroke:black;fill:${fill}' id='${row},${col}' onmousedown="handlemousedown(event, ${row},${col})"> </rect>\n`;
+                    }
+                }
+                htmlToDisplay = `<svg width="${svgWidth}" height="${svgWidth}">
+                    ${rectTags}
+                </svg>`;
+                displayArea.innerHTML = htmlToDisplay;
+
+            }
+            onmousedown(e, row, col) {
+                let pos = this.rectangles[e.target];
+                var button = "wierd"
+                switch (e.which) {
+                    case 1:
+                        button = "left"
+                        break;
+                    case 3:
+                        button = "right"
+                        break;
+                    default:
+                        break;
+                }
+                this.handleClick(row, col, button);
+            }
             boardReady() {
                 let black = [0, 0, 0];
                 let white = [1, 1, 1];
@@ -72,12 +133,58 @@
                 }
                 return true;
             }
+            getSquare(row, col) {
+                return document.getElementById(row + "," + col);
+            }
+            hasWon() {
+                for (var row = 1; row <= this.round; row++) {
+                    for (var col = 1; col <= this.round; col++) {
+                        if (this.board[row][col].includes(1)) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+            handleClick(row, col, button) {
+                let affectedCells = [
+                    [row, col + 1],
+                    [row, col - 1],
+                    [row + 1, col],
+                    [row - 1, col]
+                ];
+                let cellColor = this.board[row][col];
+                affectedCells.forEach(function(cell) {
+                    let oldCell = this.board[cell[0]][cell[1]];
+                    let red = (oldCell[0] + cellColor[0]) % 2;
+                    let yellow = (oldCell[1] + cellColor[1]) % 2;
+                    let blue = (oldCell[2] + cellColor[2]) % 2;
+                    this.board[cell[0]][cell[1]] = [red, yellow, blue]
+                }.bind(this));
+                this.board[row][col] = button == "left" ? [0, 0, 0] : [1, 1, 1]
+                if (this.hasWon()) {
+                    return currentGame = new game(this.round + 1);
+                }
+
+                for (var row = 1; row <= this.round; row++) {
+                    for (var col = 1; col <= this.round; col++) {
+                        let localColor = this.board[row][col];
+                        let fill = color[localColor[0]][localColor[1]][localColor[2]];
+                        this.getSquare(row, col).style.fill = fill;
+                    }
+                }
+            }
         }
-        console.log("ClassDone")
-        console.log("1by1");
-        var a = new game(1);
-        console.log("4by4");
-        var b = new game(4);
+
+        var currentGame = new game(1);
+
+        function handlemousedown(e, row, col) {
+            currentGame.onmousedown(e, row, col);
+        }
+
+        function handleClick(row, col) {
+            return currentGame.handleClick(row, col);
+        }
     </script>
 </body>
 
