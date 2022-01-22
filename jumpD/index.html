@@ -2,12 +2,15 @@
 
 <head>
     <title>JumpD</title>
-    <script src="js/phaser.min.js"></script>
+    <script src="js/phaser.js"></script>
 </head>
 
 <body>
-
+    <script src="js/ManagePhysics.js"></script>
+    <script src="js/tileMap.js"></script>
+    <script src="js/SceneMain.js"></script>
     <script>
+        var scene = new SceneMain()
         var config = {
             type: Phaser.AUTO,
             width: 800,
@@ -20,20 +23,10 @@
                     }
                 }
             },
-            scene: {
-                preload: preload,
-                create: create
-            }
+            scene: scene
         };
-
-        function preload() {
-
-        }
-
-        function create() {
-
-        }
-        var Game = Phaser.Game(config)
+        var player;
+        var Game = new Phaser.Game(config);
     </script>
 </body>
 
