@@ -8,4 +8,10 @@ categories: games
 I made a game!
 Check it out [here][squarepad]
 
+Hint:
+red + yellow = orange
+red + yellow + blue = white
+orange + blue = ?
+etc...
+
 [squarepad]: /squarepad
