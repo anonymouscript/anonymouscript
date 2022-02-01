@@ -9,3 +9,7 @@ function updatePhysics() {
     scene.tilemap.updatePhysics();
 
 }
+function cleanPhysics(){
+    scene.tilemap.cleanPhysics();
+    scene.player.cleanPhysics();
+}

@@ -24,6 +24,7 @@ class SceneMain extends Phaser.Scene {
     }
     update() {
         updatePhysics();
+        cleanPhysics();
     }
 
 }
