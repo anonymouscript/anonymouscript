@@ -37,16 +37,45 @@ class tilemap {
         let c1 = scene.physics.add.collider(this.Layer1, player);
         let c2 = scene.physics.add.collider(this.Layer2, player);
         c2.active = false;
+        /*let o1 = scene.physics.add.overlap(this.Layer1,player,function(bdy1,ci){
+            if (ci && (ci.collideUp && ci.collideDown && ci.collideRight && ci.collideLeft)){
+                this.Layer1.playerInzone = true;
+            }
+        }.bind(this));
+        let o2 = scene.physics.add.overlap(this.Layer2,player, function(bdy1,ci){
+            if (ci){
+                //console.log(ci);
+            }
+            if (ci && (ci.collideUp && ci.collideDown && ci.collideRight && ci.collideLeft)){
+                this.Layer1.playerInzone = true;
+            }
+        }.bind(this))*/
         this.colliders = [c1, c2];
     }
+    cleanPhysics(){
+        for(var i in this.layers){
+            this.layers[i].playerInzone = false;
+        }
+    }
+    isPlayerInZone(layer){
+        let bounds = player.getBounds();
+        let tiles = layer.getTilesWithinShape(bounds, {isNotEmpty: true});
+        let overlap = scene.physics.overlapTiles(player,tiles);
+        return overlap;
+    }
     swapLayers() {
+
         let currentCollider = this.colliders[this.activeLayer];
         let currentLayer = this.layers[this.activeLayer];
 
-        this.activeLayer = (this.activeLayer + 1) % 2;
+        let activeLayer = (this.activeLayer + 1) % 2;
 
-        let newCollider = this.colliders[this.activeLayer];
-        let newLayer = this.layers[this.activeLayer];
+        let newCollider = this.colliders[activeLayer];
+        let newLayer = this.layers[activeLayer];
+        
+        if (this.isPlayerInZone(newLayer)) return;
+
+        this.activeLayer = activeLayer;
 
         currentCollider.active = false;
         newCollider.active = true;
