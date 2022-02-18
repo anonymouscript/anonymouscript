@@ -35,6 +35,6 @@ class tilemap {
         this.scene.physics.add.collider(this.Layer1, player);
     }
     updatePhysics() {
-        this.scene.phyiscs.collide(this.dimention1, player);
+
     }
 }

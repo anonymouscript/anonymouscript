@@ -6,9 +6,14 @@
 </head>
 
 <body>
+    <script src="js/animations.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/Player.js"></script>
     <script src="js/ManagePhysics.js"></script>
     <script src="js/tileMap.js"></script>
     <script src="js/SceneMain.js"></script>
+
     <script>
         var scene = new SceneMain()
         var config = {
@@ -23,9 +28,10 @@
                     }
                 }
             },
+
             scene: scene
         };
-        var player;
+
         var Game = new Phaser.Game(config);
     </script>
 </body>
