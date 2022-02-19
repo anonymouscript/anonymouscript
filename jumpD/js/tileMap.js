@@ -22,8 +22,9 @@ class tilemap {
         console.log(this.Layer1)
         this.Decor = this.map.createLayer('Decor', this.tileset);
         this.activeLayer = this.Layer1;
-
-        scene.physics.world.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+        this.width = this.map.widthInPixels;
+        this.height = this.map.heightInPixels;
+        scene.physics.world.setBounds(0, 0, this.width, this.height);
 
         this.layers = [this.Layer1, this.Layer2];
         this.activeLayer = 0;
