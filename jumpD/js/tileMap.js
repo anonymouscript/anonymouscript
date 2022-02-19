@@ -6,7 +6,7 @@ class tilemap {
         this.inactiveAlpha = 0.3;
     }
     loadTilemapForest() {
-        scene.load.image("forestTiles_extruded", "assets/CC0/Forest_extruded.png");
+        scene.load.image("forestTiles_extruded", "assets/CC0/forest_extruded.png");
         scene.load.tilemapTiledJSON('forestTilemap', "assets/CC0/Forest.json");
     }
     createTilemapForest() {
