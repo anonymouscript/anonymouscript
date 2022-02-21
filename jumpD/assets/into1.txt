@@ -11,4 +11,16 @@ expectations are higher
 people aren't kind and nice to others
 the
 
-I decided 
+I decided not to visit this "real world"
+
+Care to Join Me? 
+
+'Yes'/'No'
+
+'Yes' Welcome!
+
+'No' What will you do now?
+
+'Wait.'/'Goodbye'
+
+'Wait' Care to Join Me?
