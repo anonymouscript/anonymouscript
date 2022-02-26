@@ -12,3 +12,11 @@ permalink: /about/
 I'm David, and I'm still just a highschool student. Don't mind me.
 
 ## What if I have something cool to share that you could put up
+
+Start A pull request at the github repository (username bellow)
+
+## Liscense 
+
+here[liscense]
+
+[liscense]:/LISCENSE.md

@@ -1,10 +1,4 @@
-- 👋 Hi, I’m @anonymouscript
-- 👀 I’m interested in ... (Dots)
-- 🌱 I’m currently learning ... (Punctuiation)
-- 💞️ I’m looking to collaborate on ... (More Dots)
-- 📫 How to reach me (Not putting up an email address yet)
+This is a repository for my website that I am making.
+Enjoy.
 
-<!---
-anonymouscript/anonymouscript is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+(By commiting code to this repository you are agreeing to publish it according to the LISCENSE)
