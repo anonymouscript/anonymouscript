@@ -19,10 +19,9 @@ var config = {
         }
     },
     pixelArt: true,
-    scene: [SceneMain, FirstScreen]
+    scene: FirstScreen
 };
 
 Game = new Phaser.Game(config);
-var scene = Game.scene.scenes[0];
-var startScene = Game.scene.scenes[1];
+var startScene = Game.scene.scenes[0];
 console.log("main finished")

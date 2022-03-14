@@ -1,7 +1,7 @@
 class FirstScreen extends Phaser.Scene {
     constructor() {
         super("FirstScreen");
-        startScreen = this;
+
         this.style = {
             fontFace: "libreBaskerville",
             fontSize: "75px"
@@ -16,15 +16,11 @@ class FirstScreen extends Phaser.Scene {
     }
     startPointerDown() {
         this.startTween.resume();
-        console.log("start tween")
+        console.log("start tween");
     }
     activateSceneMain() {
-        console.log('activate scene')
-        this.scene.launch('scenemain')
-            //this.scene.add(scene);
-
-        //this.scene.start("scenemain");
-        //this.scene.pause();
+        console.log('activate scene');
+        Game.scene.add("scenemain", SceneMain, true);
     }
     create() {
         //this.scene.add("SceneMain")
