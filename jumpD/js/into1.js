@@ -1,4 +1,4 @@
-I have, in the past, been told 
+let intro1 = ` I have, in the past, been told 
 that there are things you can't do
 once you grow older
 
@@ -23,4 +23,4 @@ Care to Join Me?
 
 'Wait.'/'Goodbye'
 
-'Wait' Care to Join Me?
+'Wait' Care to Join Me?`

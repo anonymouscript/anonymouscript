@@ -42,12 +42,15 @@ plugins:
 #
 exclude:
   - vendor/bundle/
+  - .github
+  - .git
+   - node_modules/
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/
 #   - Gemfile
 #   - Gemfile.lock
-#   - node_modules/
+
 
 #   - vendor/cache/
 #   - vendor/gems/

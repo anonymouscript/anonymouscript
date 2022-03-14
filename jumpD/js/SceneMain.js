@@ -1,6 +1,6 @@
 class SceneMain extends Phaser.Scene {
     constructor() {
-        super("SceneMain");
+        super({ key: "scenemain", visible: true });
     }
     preload() {
         console.log("loading")
@@ -8,6 +8,7 @@ class SceneMain extends Phaser.Scene {
         this.tilemap = new tilemap();
         this.tilemap.loadTilemapForest();
         camera = this.cameras.main;
+
     }
     create() {
 
