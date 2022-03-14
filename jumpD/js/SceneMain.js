@@ -1,6 +1,7 @@
 class SceneMain extends Phaser.Scene {
     constructor() {
         super({ key: "scenemain", visible: true });
+        scene = this;
     }
     preload() {
         console.log("loading")

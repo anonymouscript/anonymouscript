@@ -1,6 +1,7 @@
 class FirstScreen extends Phaser.Scene {
     constructor() {
         super("FirstScreen");
+        startScreen = this;
         this.style = {
             fontFace: "libreBaskerville",
             fontSize: "75px"
