@@ -1,0 +1,3 @@
+each component follows the following constructor signature
+constructor(scene, callback, data, config){}
+and has a method named start

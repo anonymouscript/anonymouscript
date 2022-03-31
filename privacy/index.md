@@ -4,7 +4,7 @@ title: Privacy
 ---
 
 ## Privacy 
-I don't think that we track you when you use this website, if you find out I am, please let me know
+To the best of my knowledge, this website does not track 
 ## Personal Data
 This website probably does not collect your personal data. Your data individual is too complicated. 
 
