@@ -6,7 +6,7 @@ class Listener2{
     on(event, func, args){
         func.args = args ? args : [];
         if(this.listens[event]){
-            this.lisens[event] += func;
+            this.listens[event].push(func);
         } else {
             this.listens[event] = [func];
         }

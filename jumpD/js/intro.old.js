@@ -1,4 +1,4 @@
-/*class FirstScreen extends Phaser.Scene {
+class FirstScreen extends Phaser.Scene {
     constructor() {
         super("FirstScreen");
 
@@ -57,7 +57,7 @@
     create(data) {
         //this.scene.add("SceneMain")
         this.startButton = new Button(this, "Start", this.secondSlide);
-        this.startButton.show();
+        this.startButton.start();
         this.listener = new Listener2();
         this.stack = data;
 
@@ -75,4 +75,4 @@ let stack = [
         objClass: Button
 
     }
-]*/
+]

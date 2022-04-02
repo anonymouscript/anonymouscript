@@ -6,10 +6,12 @@ var startscene;
  *it to be able to be accessed globally, instead of mangling a bunch of bind 
  *method calls, you know what you are getting
  */
+var height = 600;
+var width = 800;
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: width,
+    height: height,
     physics: {
         default: 'arcade',
         arcade: {

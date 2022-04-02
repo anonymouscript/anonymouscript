@@ -1,21 +1,22 @@
-class Button{
+ class Button{
     constructor(scene, callback, text,config={}){
         this.scene = scene; //scene is required
         this.text = text;
         this.callback = callback;
-        this.start = show;
-        if(!config.paused){
-            this.show()
+        this.style = config.style;
+        this.x = config.x ? config.x : width/2;
+        this.y = config.y ? config.y : height/2 * 0.95;
+        if(config.autostart){
+            this.start()
         }
     } 
-    start = show;
-    show(text, callback){
+    
+    start(text, callback){
         this.text = text ? text:this.text;
         this.callback = callback ? callback : this.callback;
-        let start = this.scene.add.text(this.centerX, this.centerY * 0.95, this.text, this.style);
+        let start = this.scene.add.text(this.x, this.y, this.text, this.style);
         start.setOrigin(0.5, 0.5);
         start.setInteractive();
-        start.on('pointerdown', this.scene.startPointerDown, this);
         this.startTween = this.scene.tweens.add({
             targets: [start],
             duration: 1000,
@@ -24,7 +25,8 @@ class Button{
             ease: "power0",
             onComplete: this.callback
         });
-        this.listener = new listener();
+        start.on('pointerdown', this.startTween.resume, this.startTween);
+        
     }
     
 }
