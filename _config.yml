@@ -42,6 +42,7 @@ plugins:
 #
 exclude:
   - vendor/bundle/
+  - ignore/
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/
