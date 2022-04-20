@@ -26,7 +26,8 @@ var config = {
 
 Game = new Phaser.Game(config);
 var startScene = Game.scene.scenes[0];
-// I have given up and will no
+// I have given up and will not be brewing my own listener. Fine. Remove when done sulking.
+var Emitter = new Phaser.Events.EventEmmitter();
 
 
 
