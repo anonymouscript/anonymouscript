@@ -5,6 +5,7 @@ class Listener2{
     //bind your own function, please
     on(event, func, args){
         func.args = args ? args : [];
+        func.args = func.args.length || func.args.length == 0 ? func.args : [func.args];
         if(this.listens[event]){
             this.listens[event].push(func);
         } else {

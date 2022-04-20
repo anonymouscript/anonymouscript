@@ -26,4 +26,8 @@ var config = {
 
 Game = new Phaser.Game(config);
 var startScene = Game.scene.scenes[0];
+// I have given up and will no
+
+
+
 console.log("main finished")
